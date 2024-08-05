@@ -1,0 +1,25 @@
+{
+  "name": "my-web-components-library",
+  "version": "1.0.0",
+  "main": "dist/my-library.umd.js",
+  "module": "dist/my-library.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ol": "^10.0.0",
+    "typescript": "^5.5.4",
+    "url": "^0.11.4",
+    "vite": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.1"
+  }
+}

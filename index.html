@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map and Control Example</title>
+    <script type="module" src="dist/index.es.js"></script>
+    <link href="node_modules/ol/ol.css">
+</head>
+
+<body>
+    <!-- Use the custom map element with unique ID -->
+    <map-element style="width: 100%; height: 100vh;" id="my-map" center="[0, 0]" zoom="5">
+        <layer-control slot="control-slot">
+            <draw_zoom id="button1">Button 1</draw_zoom>
+            <draw_zoom id="button2">Button 2</draw_zoom>
+            <!-- More buttons or other elements can be added here -->
+        </layer-control>
+    </map-element>
+
+    <script>
+        // Access the map instance
+        const mapElement = document.querySelector('map-element');
+        // if (mapElement) {
+        //     const mapInstance = (mapElement).getMapInstance(); // Use appropriate casting
+        //     console.log('Map instance:', mapInstance);
+        // }
+
+        // // Listen for events from LayerControl
+        // document.querySelector('layer-control')?.addEventListener('click', (event) => {
+        //     if ((event.target ).tagName === 'BUTTON') {
+        //         console.log('Button clicked:', (event.target ).id);
+        //         // Implement logic for button clicks here
+        //     }
+        // });
+    </script>
+</body>
+
+</html>
