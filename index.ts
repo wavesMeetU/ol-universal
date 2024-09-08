@@ -1,6 +1,4 @@
-import MyLibrary from "./src";
+import { registerComponentDynamically } from "./dynamic-register";
 
-const domRoot = document.getElementById("root") as HTMLElement;
-const myLibraryInstance = new MyLibrary();
-
-domRoot.innerHTML = `<p>Hello ${myLibraryInstance.myMethod()}</p>`;
+// Dynamically register components
+registerComponentDynamically("map-element");

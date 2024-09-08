@@ -1,3 +1,2 @@
-export { MyComponent } from './main.component';
-export { MapElement } from './map.component';
-
+import { MapElement } from "./components/map-element.component";
+export default MapElement;

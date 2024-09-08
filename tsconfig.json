@@ -17,7 +17,10 @@
     "noImplicitThis": false,
     "noImplicitReturns": false,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node", "jest"]
+    "types": ["vite/client", "node", "jest"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    
   },
   "include": ["src"],
   "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"]

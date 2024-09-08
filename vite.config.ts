@@ -7,8 +7,8 @@ import packageJson from "./package.json";
 import styleInject from "./plugins/style-inject";
 
 // node version
-const major = process.version.match(/v([0-9]*).([0-9]*)/)[1];
-const minor = process.version.match(/v([0-9]*).([0-9]*)/)[2];
+const major = process.version.match(/v([0-9]*).([0-9]*)/)![1];
+const minor = process.version.match(/v([0-9]*).([0-9]*)/)![2];
 
 /**
  * cpSync
@@ -86,13 +86,13 @@ export default defineConfig(({ command, mode }) => {
   else if (mode === "production") {
     // do something
   }
-  
+
   return {
     base: "./",
     server: {
-      port: 8080,
+      port: 4200,
       https: false,
-      open: true
+      open: true,
     },
     build: {
       lib: {
@@ -101,6 +101,12 @@ export default defineConfig(({ command, mode }) => {
         formats: ["es", "umd", "iife"],
         fileName: (format) => fileName[format],
       },
+      commonjsOptions: {
+        include: [/node_modules/],  // Ensures proper handling of CommonJS modules
+      },
+    },
+    optimizeDeps: {
+      exclude: ['ol'],  // Prevent Vite from optimizing `ol` to avoid build issues
     },
     plugins: [
       banner(pkgInfo),
