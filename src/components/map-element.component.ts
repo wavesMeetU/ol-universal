@@ -1,40 +1,16 @@
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
+import { CustomElement, TemplateUrl, StyleUrl } from "../utilitiy/decorators";
+
+@CustomElement("map-element")
+@TemplateUrl("./map-element.template.html")
+@StyleUrl("./map-element.styles.css")
 export class MapElement extends HTMLElement {
   private map!: Map;
 
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-
-    this.shadowRoot!.innerHTML = `
-      <style>
-      @import url('https://unpkg.com/ol/ol.css');
-        #map-container {
-          width: 100%;
-          height: 100vh;
-          position: relative;
-        }
-        #map { 
-          width: 100%; 
-          height: 100vh; 
-        }
-        .controls {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          z-index: 1000;
-        }
-      </style>
-      <div id="map-container">
-        <div id="map"></div>
-        <div class="controls">
-          <slot name="control-slot"></slot>
-        </div>
-      </div>
-    `;
-
     console.log("Map element created");
   }
 
@@ -88,10 +64,4 @@ export class MapElement extends HTMLElement {
     }
     return this.map;
   }
-}
-
-// Define the custom element
-
-if (!customElements.get("map-element")) {
-  customElements.define("map-element", MapElement);
 }

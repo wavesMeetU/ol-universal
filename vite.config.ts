@@ -2,11 +2,10 @@ import fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
 import banner from "vite-plugin-banner";
-// import dts from "vite-plugin-dts";
 import packageJson from "./package.json";
 import styleInject from "./plugins/style-inject";
 
-// node version
+// Node version
 const major = process.version.match(/v([0-9]*).([0-9]*)/)![1];
 const minor = process.version.match(/v([0-9]*).([0-9]*)/)![2];
 
@@ -15,7 +14,7 @@ const minor = process.version.match(/v([0-9]*).([0-9]*)/)![2];
  * @param {string} source
  * @param {string} destination
  */
-const cpSync = (source, destination) => {
+const cpSync = (source: string, destination: string) => {
   if (Number(major) < 16 || (Number(major) == 16 && Number(minor) < 7)) {
     if (fs.existsSync(destination)) {
       fs.rmSync(destination, { recursive: true });
@@ -68,23 +67,23 @@ const pkgInfo = `/**
  */`;
 
 export default defineConfig(({ command, mode }) => {
-  // when command line: vite
+  // When command line: vite
   if (command === "serve") {
-    // do something
+    // Do something
   }
-  // when command line: vite build
+  // When command line: vite build
   else if (command === "build") {
-    // do something
+    // Do something
     // fs.rmdirSync("./dist", { recursive: true });
   }
 
-  // such as command line: vite --mode development
+  // Such as command line: vite --mode development
   if (mode === "development") {
-    // do something
+    // Do something
   }
-  // such as command line: vite build --mode production
+  // Such as command line: vite build --mode production
   else if (mode === "production") {
-    // do something
+    // Do something
   }
 
   return {
@@ -102,11 +101,11 @@ export default defineConfig(({ command, mode }) => {
         fileName: (format) => fileName[format],
       },
       commonjsOptions: {
-        include: [/node_modules/],  // Ensures proper handling of CommonJS modules
+        include: [/node_modules/], // Ensures proper handling of CommonJS modules
       },
     },
     optimizeDeps: {
-      exclude: ['ol'],  // Prevent Vite from optimizing `ol` to avoid build issues
+      exclude: ['ol'], // Prevent Vite from optimizing `ol` to avoid build issues
     },
     plugins: [
       banner(pkgInfo),
